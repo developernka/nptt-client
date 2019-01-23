@@ -1,0 +1,28 @@
+<div class="container-fluid p-4">
+<div class="loader ml-auto mr-auto align-bottom" *ngIf="!showTable"></div>
+<div  [ngStyle]="{'visibility':showTable ? 'visible' : 'hidden'}">
+<table class="table table-striped table-bordered" >
+  <thead>
+    <tr>
+      <th *ngFor="let key of statusListHeaders" class="{{key}}">
+          {{key.replace("_"," ") | titlecase }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let status of statusList">
+      <td *ngFor="let key of statusListHeaders" class="{{key}}">
+        {{status[key]!='0000-00-00'?status[key]:''}}
+      </td>
+    </tr>
+  </tbody>
+    <!--<tfoot>
+        <tr>
+            <th *ngFor="let key of statusListHeaders" class="{{key}}">
+                {{key.replace("_"," ") | titlecase }}
+            </th>
+        </tr>
+    </tfoot>-->
+</table>
+</div>
+</div>
